@@ -1,0 +1,22 @@
+{
+    "in_length": 5000,
+    "in_channels": 8,
+    "n_grps": 4, 
+    "num_classes": 0,
+    "N": 4,
+    "dropout": 0.3,
+    "first_width": 32,
+    "stride": [2,1,2,1],
+    "num_layers": 4,
+    "d_mode": 64,
+    "nhead": 8,
+    "dilation": 100,
+    "data_dir": "/raw_data/umcu_rhythm",
+    "train_labels_csv": "/training/captioning/datasets/train_2.csv",
+    "test_labels_csv": "/training/captioning/datasets/test_2.csv",
+    "learning_rate": 0.0001,
+    "batch_size": 64,
+    "epochs": 30,
+    "pre_train": "/training/captioning/models/topic/TOP-68/checkpoints/epoch=10-step=45594.ckpt",
+    "continuetrain": ""
+}

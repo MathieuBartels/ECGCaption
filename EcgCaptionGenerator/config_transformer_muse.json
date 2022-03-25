@@ -1,0 +1,22 @@
+{
+    "in_length": 5000,
+    "in_channels": 8,
+    "n_grps": 4, 
+    "num_classes": 0,
+    "N": 4,
+    "dropout": 0.3,
+    "first_width": 32,
+    "stride": [2,1,2,1],
+    "num_layers": 4,
+    "d_mode": 128,
+    "nhead": 8,
+    "dilation": 100,
+    "data_dir": "/raw_data/umcu_rhythm",
+    "train_labels_csv": "/training/captioning/datasets/train_muse.csv",
+    "test_labels_csv": "/training/captioning/datasets/test_muse.csv",
+    "learning_rate": 0.0001,
+    "batch_size": 64,
+    "epochs": 30,
+    "pretrain": "/training/captioning/models/topic/TOP-24/checkpoints/epoch=15-step=66319.ckpt",
+    "continuetrain": "/training/transformer/models/transformer/TRAN-39/checkpoints/epoch=7-step=33159.ckpt"
+}
