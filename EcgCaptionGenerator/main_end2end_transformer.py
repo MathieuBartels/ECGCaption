@@ -16,13 +16,14 @@ import pandas as pd
 
 def cli_main(params, dev):
     pl.seed_everything(1234)
-    api_key = open("api_key.txt", "r").read()
+    # api_key = open("api_key.txt", "r").read()
 
-    neptune_logger = DummyLogger() if dev else NeptuneLogger(api_key=api_key,
-        project_name="mathieubartels/fullytransformer",
-        params=params,
-        experiment_name='fully_transformer',
-        upload_source_files=['*.py', '*.json', '../EcgCaptionGenerator/**/*.py'])
+    neptune_logger = DummyLogger() 
+    # if dev else NeptuneLogger(api_key=api_key,
+    #     project_name="mathieubartels/fullytransformer",
+    #     params=params,
+    #     experiment_name='fully_transformer',
+    #     upload_source_files=['*.py', '*.json', '../EcgCaptionGenerator/**/*.py'])
 
     train_loader, val_loader, test_loader, vocab = get_loaders(dev, params, topic=False)
     
