@@ -55,6 +55,20 @@ class TopDownLSTM(pl.LightningModule):
 
         return output
 
+    def sample(self, waveforms, ids, s):
+        """
+            written without the data available so prone to errors
+        """
+        with torch.no_grad():
+            _, im_features = self.model(waveforms)
+            im_features = im_features.transpose(2,1)
+            language_model = self.language_model
+            nb_batch = im_features.shape[0]
+            start_word = torch.tensor([self.vocab('<start>')], device=waveforms.device)
+            start_word = start_word.repeat(nb_batch, 1)
+            words = language_model.generate(im_features, 50, 5, ids, s)
+            return words
+
     def check_prediction(self, out, targets):
         nb_batch = out.shape[0]
         index = random.randint(0, nb_batch-1)

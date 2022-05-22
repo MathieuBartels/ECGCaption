@@ -11,7 +11,7 @@ sys.path.append('..')
 from EcgCaptionGenerator.systems.transformer import Transformer
 from EcgCaptionGenerator.systems.topic import Topic
 from EcgCaptionGenerator.systems.topic_unchanged_decoder import TopicSimDecoder
-from EcgCaptionGenerator.util import get_encoder, get_loaders
+from EcgCaptionGenerator.util import get_encoder, get_loaders, get_loaders_toy_data
 import pandas as pd
 
 def cli_main(params, dev):
@@ -25,7 +25,7 @@ def cli_main(params, dev):
     #     experiment_name='transformer',
     #     upload_source_files=['*.py', '*.json', '../EcgCaptionGenerator/**/*.py'])
 
-    train_loader, val_loader, test_loader, vocab = get_loaders(dev, params, topic=False)
+    train_loader, val_loader, test_loader, vocab = get_loaders_toy_data(dev, params, topic=False)
     
     model = Transformer(vocab, **params)
 
@@ -57,8 +57,8 @@ def cli_main(params, dev):
     trainer.test(test_dataloaders=test_loader)
 
 if __name__ == '__main__':
-    # params, dev = json.load(open('config_transformer_muse.json', 'r')), False
-    params, dev = json.load(open('config_transformer_consult.json', 'r')), False
+    # params, dev = json.load(open('config_transformer_physician_corrected.json', 'r')), False
+    params, dev = json.load(open('config_transformer_physician_annotated.json', 'r')), False
     # params, dev = json.load(open('config_transformer_debug.json', 'r')), True
     
     cli_main(params, dev)
